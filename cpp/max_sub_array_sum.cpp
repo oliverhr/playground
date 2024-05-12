@@ -1,7 +1,7 @@
 #include <iostream>
 #include <type_traits>
 
-#define _nl "\n"
+#define _n "\n"
 
 int solution1(int n, int arr[]) {
 	int best = 0;
@@ -12,7 +12,7 @@ int solution1(int n, int arr[]) {
 			sum += arr[j];
 			best = std::max(best, sum);
 		}
-		// cout << _nl;
+		// cout << _n;
 	}
 	return best;
 }
@@ -37,7 +37,7 @@ int solution2(int n, int arr[]) {
         sum = std::max(arr[i], sum + arr[i]);
         best = std::max(best, sum);
     }
-    std::cout << "Steps: " << counter << _nl;
+    std::cout << "Steps: " << counter << _n;
     return best;
 }
 
@@ -45,6 +45,6 @@ int main() {
    	const int n = 8;
 	int arr[n] = {-1, 2, 4, -3, 5, 2, -5, 2};
 
-	std::cout << "Solution 1: " << solution1(n, arr) << _nl;
-	std::cout << "Solution 2: \n" << solution2(n, arr) << _nl;
+	std::cout << "Solution 1: " << solution1(n, arr) << _n;
+	std::cout << "Solution 2: \n" << solution2(n, arr) << _n;
 }
