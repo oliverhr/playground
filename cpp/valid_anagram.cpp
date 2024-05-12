@@ -3,8 +3,6 @@
 
 #include <set>
 #include <unordered_map>
-#include <tuple>
-#include <ranges>
 
 
 #define _n "\n"
