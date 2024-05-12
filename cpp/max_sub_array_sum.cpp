@@ -45,6 +45,6 @@ int main() {
    	const int n = 8;
 	int arr[n] = {-1, 2, 4, -3, 5, 2, -5, 2};
 
-	// std::cout << "Solution 1: " << solution1(n, arr) << _nl;
+	std::cout << "Solution 1: " << solution1(n, arr) << _nl;
 	std::cout << "Solution 2: \n" << solution2(n, arr) << _nl;
 }
