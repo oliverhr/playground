@@ -15,24 +15,19 @@
 # 1 <= s.length <= 10^4
 # s consists of parenthesis only '()[]{}'
 # -----------------------------------------------------------------------------
+import unittest
+
 
 def implementation():
     return None
 
-
-def test_expect_tobe_true():
-    expected = True
-    actual = implementation()
-    assert expected == actual, \
-           f'expected {expected} but {actual} was received.'
+class TestValidParentheses(unittest.TestCase):
+    def test_expect_tobe_true(self):
+        self.assertTrue(implementation())
 
 
-def test_expect_tobe_false():
-    expected = False
-    actual = implementation()
-    assert expected == actual, \
-           f'expected {expected} but {actual} was received.'
-
+    def test_expect_tobe_false(self):
+        self.assertFalse(implementation())
 
 # leet code shit
 class Solution:
@@ -40,6 +35,4 @@ class Solution:
         return implementation(s)
 
 if __name__ == '__main__':
-    test_expect_tobe_true()
-    test_expect_tobe_false()
-
+    unittest.main()
