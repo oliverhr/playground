@@ -52,20 +52,22 @@ def implementation(string):
     por cada item de apertura debe primero aparecer
     el cierre del último elemento abierto.
     """
-    length = len(string)
-    if not length or length % 2 != 0:
-        return False
+    if len(string) == 1: return False
 
-    chars = {'(': ')',
-             '[': ']',
-             '{': '}',}
+    opens = {'(', '[', '{'}
+    pairs = {')': '(', ']': '[', '}': '{'}
 
     stack = list()
     for ch in string:
-        if ch in chars:
-            stack.append(chars.get(ch))
-        elif not stack or ch != stack.pop():
+        if ch in opens:
+            stack.append(ch)
+            continue
+
+        if not stack: return False
+        if ch in pairs and stack[-1] != pairs.get(ch):
             return False
+        stack.pop()
+
     return stack == []
 
 
