@@ -19,17 +19,24 @@ import unittest
 
 
 class TestValidParentheses(unittest.TestCase):
-    def test_expect_tobe_true(self):
-        self.assertTrue(implementation(''))
+    def test_expect_true(self):
+        self.assertTrue(implementation('()'))
+        self.assertTrue(implementation('(){}[]'))
+        self.assertTrue(implementation('{([])}'))
 
-    def test_expect_tobe_false(self):
-        self.assertFalse(implementation(''))
+    def test_expect_false(self):
+        self.assertFalse(implementation('{'))
+        self.assertFalse(implementation(']'))
+        self.assertFalse(implementation('(]'))
+        self.assertFalse(implementation('(('))
+        self.assertFalse(implementation(']]'))
+        self.assertFalse(implementation('){'))
+
 
 # leet code shit
 class Solution:
     def isValid(self, s: str) -> bool:
         return implementation(s)
-
 
 def implementation(string):
     """
@@ -45,7 +52,21 @@ def implementation(string):
     por cada item de apertura debe primero aparecer
     el cierre del último elemento abierto.
     """
-    return None
+    length = len(string)
+    if not length or length % 2 != 0:
+        return False
+
+    chars = {'(': ')',
+             '[': ']',
+             '{': '}',}
+
+    stack = list()
+    for ch in string:
+        if ch in chars:
+            stack.append(chars.get(ch))
+        elif not stack or ch != stack.pop():
+            return False
+    return stack == []
 
 
 if __name__ == '__main__':
