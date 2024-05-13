@@ -30,7 +30,7 @@ class Solution:
         return implementation(s)
 
 
-def implementation():
+def implementation(string):
     return None
 
 
