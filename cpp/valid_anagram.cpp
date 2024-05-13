@@ -1,8 +1,7 @@
 #include <iostream>
 #include <type_traits>
 
-#include <set>
-#include <unordered_map>
+#include <unordered_set>
 
 
 #define _n "\n"
@@ -16,23 +15,19 @@ int main() {
 
 bool valid(std::string original, std::string anagram) {
     if (anagram.length() != anagram.length()) return false;
-    int const len = anagram.length(); // automatic casting
 
-    // just for fun
-    std::set<char> chars(original.begin(), original.end());
+    std::unordered_set<char> chars;
+    std::unordered_multiset<char> org;
+    std::unordered_multiset<char> ana;
 
-    // value isn't necessary but, the index is being saved
-    std::unordered_map<char, int> org;
-    std::unordered_map<char, int> ana;
-
-    // note: check c++23 std::views::zip
-    for (int i = 0; i < len; i++) {
-        org[original[i]] = i;
-        ana[anagram[i]] = i;
+    for (uint i = 0; i < anagram.length(); i++) {
+        chars.insert(original[i]);
+        org.insert(original[i]);
+        ana.insert(anagram[i]);
     }
 
     for (auto ch : chars) {
-        if (!ana.contains(ch)) return false;    // -std=c++20
+        if (!ana.contains(ch)) return false; // -std=c++20
         if (ana.count(ch) != org.count(ch)) return false;
     }
 
