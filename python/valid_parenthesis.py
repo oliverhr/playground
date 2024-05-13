@@ -17,7 +17,6 @@
 # -----------------------------------------------------------------------------
 import unittest
 
-
 class TestValidParentheses(unittest.TestCase):
     def test_expect_true(self):
         self.assertTrue(implementation('()'))
@@ -33,43 +32,20 @@ class TestValidParentheses(unittest.TestCase):
         self.assertFalse(implementation('){'))
 
 
-# leet code shit
-class Solution:
-    def isValid(self, s: str) -> bool:
-        return implementation(s)
-
 def implementation(string):
-    """
-    Estratégia: vamos a iterar por la cadena de texto
-    buscando por brackets de apertura, si se encuentra
-    un bracket de cierre primero se regresa False.
-
-    Como soporte se va a utilizar un stack para ir
-    agregando los simbolos de apertura que se vayan
-    encontrando, la interacción válida es:
-    apertaura/cierre, es decir se puede espeerar
-    varios elementos de apertura seguidos, pero si
-    por cada item de apertura debe primero aparecer
-    el cierre del último elemento abierto.
-    """
     if len(string) == 1: return False
-
     opens = {'(', '[', '{'}
-    pairs = {')': '(', ']': '[', '}': '{'}
-
+    pairs = {')': '(', ']': '[', '}': '{'}\
     stack = list()
     for ch in string:
         if ch in opens:
             stack.append(ch)
             continue
-
         if not stack: return False
         if ch in pairs and stack[-1] != pairs.get(ch):
             return False
         stack.pop()
-
     return stack == []
-
 
 if __name__ == '__main__':
     unittest.main()
