@@ -12,10 +12,11 @@
 # 3. Every close bracket has a corresponding open bracket of the same type.
 #
 # Constraints:
-# 1 <= s.length <= 10^4
-# s consists of parenthesis only '()[]{}'
+#   - 1 <= s.length <= 10^4
+#   - s consists of parenthesis only '()[]{}'
 # -----------------------------------------------------------------------------
 import unittest
+
 
 class TestValidParentheses(unittest.TestCase):
     def test_expect_tobe_true(self):
@@ -33,13 +34,16 @@ class Solution:
 def implementation(string):
     """
     Estratégia: vamos a iterar por la cadena de texto
-    buscando por brackets de apertua, si se encuentra
-    un bracket de cierre primero se regresa false.
+    buscando por brackets de apertura, si se encuentra
+    un bracket de cierre primero se regresa False.
 
     Como soporte se va a utilizar un stack para ir
     agregando los simbolos de apertura que se vayan
     encontrando, la interacción válida es:
-    apertaura/cierre.
+    apertaura/cierre, es decir se puede espeerar
+    varios elementos de apertura seguidos, pero si
+    por cada item de apertura debe primero aparecer
+    el cierre del último elemento abierto.
     """
     return None
 
