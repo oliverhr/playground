@@ -33,7 +33,7 @@ class TestValidParentheses(unittest.TestCase):
 
 
 def implementation(string):
-    if len(string) == 1: return False
+    if len(string) % 2 != 0: return False
     opens = { '(', '[', '{' }
     pairs = { ')': '(', ']': '[', '}': '{' }
     stack = list()
