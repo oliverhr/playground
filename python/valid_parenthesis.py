@@ -19,10 +19,10 @@ import unittest
 
 class TestValidParentheses(unittest.TestCase):
     def test_expect_tobe_true(self):
-        self.assertTrue(implementation())
+        self.assertTrue(implementation(''))
 
     def test_expect_tobe_false(self):
-        self.assertFalse(implementation())
+        self.assertFalse(implementation(''))
 
 # leet code shit
 class Solution:
@@ -31,6 +31,16 @@ class Solution:
 
 
 def implementation(string):
+    """
+    Estratégia: vamos a iterar por la cadena de texto
+    buscando por brackets de apertua, si se encuentra
+    un bracket de cierre primero se regresa false.
+
+    Como soporte se va a utilizar un stack para ir
+    agregando los simbolos de apertura que se vayan
+    encontrando, la interacción válida es:
+    apertaura/cierre.
+    """
     return None
 
 
