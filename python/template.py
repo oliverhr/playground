@@ -1,11 +1,12 @@
 def implementation():
-    pass
+    return False
 
 
 def test():
     expected = True
-    actual = False
-    assert expected == actual, f'expected {expected} but {actual} was received.'
+    actual = implementation()
+    assert expected == actual, \
+           f'expected {expected} but {actual} was received.'
 
 if __name__ == '__main__':
     test()
