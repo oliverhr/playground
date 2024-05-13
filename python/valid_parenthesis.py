@@ -17,14 +17,9 @@
 # -----------------------------------------------------------------------------
 import unittest
 
-
-def implementation():
-    return None
-
 class TestValidParentheses(unittest.TestCase):
     def test_expect_tobe_true(self):
         self.assertTrue(implementation())
-
 
     def test_expect_tobe_false(self):
         self.assertFalse(implementation())
@@ -34,5 +29,11 @@ class Solution:
     def isValid(self, s: str) -> bool:
         return implementation(s)
 
+
+def implementation():
+    return None
+
+
 if __name__ == '__main__':
     unittest.main()
+
