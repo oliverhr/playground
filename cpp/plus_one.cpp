@@ -21,13 +21,14 @@ Constraints:
 #include <vector>
 
 
-void printVector(std::vector<int>& digits)
+std::string toStringVector(std::vector<int>& digits)
 {
+	std::string number = "";
 	for (auto n : digits)
 	{
-		std::cout << n;
+		number += std::to_string(n);
 	}
-	std::cout << "\n";
+	return number;
 }
 
 
@@ -53,7 +54,7 @@ std::vector<int> plusOne(std::vector<int>& digits)
 		int idx = (length - 1) - counter;
 		digits[idx]++;
 
-		for (int i = idx + 1; i < digits.size(); i++)
+		for (int i = idx + 1; i < length; i++)
 		{
 			digits[i] = 0;
 		}
@@ -72,39 +73,43 @@ std::vector<int> plusOne(std::vector<int>& digits)
 
 
 // ----------------------------------------------------------------------------
-void test1()
+void test(std::vector<int>& digits) {
+	std::string before = toStringVector(digits);
+	plusOne(digits);
+	std::string after = toStringVector(digits);
+	std::cout << "Before: " << before << " After: " << after << "\n";
+}
+
+void case1()
 {
 	std::vector<int> digits = { 4, 3, 2, 1 };
-	plusOne(digits);
-	printVector(digits);
+	test(digits);
 }
 
-void test2()
+void case2()
 {
 	std::vector<int> digits = { 9 };
-	plusOne(digits);
-	printVector(digits);
+	test(digits);
 }
 
-void test3()
+void case3()
 {
 	std::vector<int> digits = { 1, 9 };
-	plusOne(digits);
-	printVector(digits);
+	test(digits);
 }
 
-void test4()
+void case4()
 {
 	std::vector<int> digits = { 1, 9, 9 };
-	plusOne(digits);
-	printVector(digits);
+	test(digits);
 }
 
 // ----------------------------------------------------------------------------
 int main()
 {
-	test1();
-	test2();
-	test3();
-	test4();
+	case1();
+	case2();
+	case3();
+	case4();
 }
+
