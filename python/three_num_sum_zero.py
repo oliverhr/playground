@@ -37,29 +37,52 @@ import unittest
 
 class TestThreeSumNumZero(unittest.TestCase):
 	def test_case_1(self):
-		self.assertListEqual(implementation([-1, 0, 1, 2, -1, -4]), [
+		self.assertListEqual(implementation([-1,0,1,2,-1,-4]), [
+			[-1, -1, 2],
 			[-1, 0, 1],
-			[-1, 2, -1],
 		])
 
 	def test_case_2(self):
-		self.assertListEqual(implementation([0, 1 , 1]), [])
+		self.assertListEqual(implementation([0,1,1]), [])
 
 	def test_case_3(self):
-		self.assertListEqual(implementation([0, 0 , 0]), [[0,0,0]])
+		self.assertListEqual(implementation([0,0,0]), [[0,0,0]])
+
+	def test_case_4(self):
+		self.assertListEqual(implementation([0,0,0,0]), [[0,0,0]])
 
 # -----------------------------------------------------------------------------
 
-def implementation(array: list[int]) -> list[list[int]]:
+def implementation(nums: list[int]) -> list[list[int]]:
 	zero = 0;
 	output = []
-	for i in range(len(array) - 2):
-		for j in range(i+1, len(array)-1):
-			if sum(numbers := [array[i], array[j], array[j+1]]) == zero:
-				output.append(numbers)
+	nums.sort()
+
+	if nums[0] > 0: return output
+	for i in range(len(nums) - 2):
+		if i > 0 and nums[i - 1] == nums[i]: continue
+
+		left = i + 1
+		right = len(nums) - 1
+
+		target = 0 - nums[i]
+
+		while (left < right):
+			if (calc := nums[left] + nums[right]) == target:
+				triplet = [nums[i], nums[left], nums[right]]
+				output.append(triplet)
+				left += 1
+				right -= 1
+			elif calc < target:
+				left += 1
+			else:
+				right -= 1
+
 	return  output
 
 # -----------------------------------------------------------------------------
 
 if __name__ == '__main__':
 	unittest.main()
+	# arr = implementation([-1,0,1,2,-1,-4])
+	# print(arr)
