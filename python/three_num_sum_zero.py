@@ -39,11 +39,11 @@ class TestThreeSumNumZero(unittest.TestCase):
 	def test_case_5(self):
 		self.assertListEqual(implementation([-2,0,0,2,2]), [[-2,0,2]])
 
-	# def test_case_4(self):
-	# 	self.assertListEqual(implementation([0,0,0,0]), [[0,0,0]])
+	def test_case_4(self):
+		self.assertListEqual(implementation([0,0,0,0]), [[0,0,0]])
 
-	# def test_case_3(self):
-	# 	self.assertListEqual(implementation([0,0,0]), [[0,0,0]])
+	def test_case_3(self):
+		self.assertListEqual(implementation([0,0,0]), [[0,0,0]])
 
 	def test_case_2(self):
 		self.assertListEqual(implementation([0,1,1]), [])
@@ -64,8 +64,9 @@ def implementation(nums: list[int]) -> list[list[int]]:
 	if nums[0] > 0: return output
 
 	for index in range(len(nums) - 2):
-		# if current value is the same as the previous skip
-		if nums[index] == nums[index-1]:
+		# after the first index (0) if current value
+		# is the same as the previous skip aka continue
+		if index > zero and nums[index] == nums[index-1]:
 			continue
 
 		# left pointer is next to current index
@@ -76,26 +77,25 @@ def implementation(nums: list[int]) -> list[list[int]]:
 		# index is increased each iteration
 		# we need to move right and left pointers
 		# we do this until they are the same
+
 		while left != right:
-			triplet = [nums[index], tleft:=nums[left], tright:=nums[right]]
+			triplet = [nums[index], seen:=nums[left], nums[right]]
+			summed = sum(triplet)
 
 			# If not zero move only one pointer
-			if (total := sum(triplet)) < zero: left += 1; continue
-			if total > zero: right -= 1; continue
+			if summed < zero: left += 1; continue
+			if summed > zero: right -= 1; continue
 
 			# if zero append the triplet and move the
 			# pointers unil skipping repeated values
-			if total == zero:
+			if summed == zero:
 				output.append(triplet)
-				# move pointers l-> <-r to the next different value
-				while left < right and nums[left] == tleft:
-					left += 1 # ->
-				while right > left and nums[right] == tright:
-					right -= 1 # <-
+				# move pointer l-> to the next different value
+				while left < right and nums[left] == seen:
+					left += 1
 	return output
 
 # -----------------------------------------------------------------------------
 
 if __name__ == '__main__':
 	unittest.main()
-
