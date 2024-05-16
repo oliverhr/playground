@@ -1,4 +1,4 @@
-"""
+ """
 3Sum
 
 Description 
@@ -61,6 +61,7 @@ def implementation(nums: list[int]) -> list[list[int]]:
 	nums.sort()
 	output = []
 
+	# without negative numbers we can't get zero in a sum
 	if nums[0] > 0: return output
 
 	for index in range(len(nums) - 2):
