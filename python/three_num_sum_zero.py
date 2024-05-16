@@ -87,7 +87,7 @@ def implementation(nums: list[int]) -> list[list[int]]:
 			if summed > zero: right -= 1; continue
 
 			# if zero append the triplet and move the
-			# pointers unil skipping repeated values
+			# pointers unil skippinig repeated values
 			if summed == zero:
 				output.append(triplet)
 				# move pointer l-> to the next different value
