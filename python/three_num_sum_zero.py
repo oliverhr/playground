@@ -36,53 +36,66 @@ import unittest
 
 
 class TestThreeSumNumZero(unittest.TestCase):
+	def test_case_5(self):
+		self.assertListEqual(implementation([-2,0,0,2,2]), [[-2,0,2]])
+
+	# def test_case_4(self):
+	# 	self.assertListEqual(implementation([0,0,0,0]), [[0,0,0]])
+
+	# def test_case_3(self):
+	# 	self.assertListEqual(implementation([0,0,0]), [[0,0,0]])
+
+	def test_case_2(self):
+		self.assertListEqual(implementation([0,1,1]), [])
+
 	def test_case_1(self):
 		self.assertListEqual(implementation([-1,0,1,2,-1,-4]), [
 			[-1, -1, 2],
 			[-1, 0, 1],
 		])
 
-	def test_case_2(self):
-		self.assertListEqual(implementation([0,1,1]), [])
-
-	def test_case_3(self):
-		self.assertListEqual(implementation([0,0,0]), [[0,0,0]])
-
-	def test_case_4(self):
-		self.assertListEqual(implementation([0,0,0,0]), [[0,0,0]])
-
 # -----------------------------------------------------------------------------
 
 def implementation(nums: list[int]) -> list[list[int]]:
-	zero = 0;
-	output = []
+	zero = 0
 	nums.sort()
+	output = []
 
 	if nums[0] > 0: return output
-	for i in range(len(nums) - 2):
-		if i > 0 and nums[i - 1] == nums[i]: continue
 
-		left = i + 1
+	for index in range(len(nums) - 2):
+		# if current value is the same as the previous skip
+		if nums[index] == nums[index-1]:
+			continue
+
+		# left pointer is next to current index
+		left = index + 1
+		# right is the last item in the list
 		right = len(nums) - 1
 
-		target = 0 - nums[i]
+		# index is increased each iteration
+		# we need to move right and left pointers
+		# we do this until they are the same
+		while left != right:
+			triplet = [nums[index], tleft:=nums[left], tright:=nums[right]]
 
-		while (left < right):
-			if (calc := nums[left] + nums[right]) == target:
-				triplet = [nums[i], nums[left], nums[right]]
+			# If not zero move only one pointer
+			if (total := sum(triplet)) < zero: left += 1; continue
+			if total > zero: right -= 1; continue
+
+			# if zero append the triplet and move the
+			# pointers unil skipping repeated values
+			if total == zero:
 				output.append(triplet)
-				left += 1
-				right -= 1
-			elif calc < target:
-				left += 1
-			else:
-				right -= 1
-
-	return  output
+				# move pointers l-> <-r to the next different value
+				while left < right and nums[left] == tleft:
+					left += 1 # ->
+				while right > left and nums[right] == tright:
+					right -= 1 # <-
+	return output
 
 # -----------------------------------------------------------------------------
 
 if __name__ == '__main__':
 	unittest.main()
-	# arr = implementation([-1,0,1,2,-1,-4])
-	# print(arr)
+
