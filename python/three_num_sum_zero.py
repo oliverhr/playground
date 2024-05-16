@@ -90,7 +90,7 @@ def implementation(nums: list[int]) -> list[list[int]]:
 			# pointers unil skippinig repeated values
 			if summed == zero:
 				output.append(triplet)
-				# move pointer l-> to the next different value
+				# move pointer l-> until next different value
 				while left < right and nums[left] == seen:
 					left += 1
 	return output
