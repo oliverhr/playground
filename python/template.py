@@ -28,7 +28,6 @@ def test_expect_tobe_false():
     assert expected == actual, \
            f'expected {expected} but {actual} was received.'
 
-
 # leet code shit
 class Solution:
     def isValid(self, s: str) -> bool:
