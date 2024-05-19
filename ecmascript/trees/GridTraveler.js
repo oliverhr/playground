@@ -24,5 +24,4 @@ const grids = [
     [18, 18],
 ]
 
-console.log('------------------------')
 grids.forEach(([x, y]) => console.log(`${x}, ${y}: ${gridTraveler(x, y)}`))

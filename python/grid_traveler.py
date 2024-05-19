@@ -1,4 +1,3 @@
-
 def grid_traveler(x, y, mem={}):
     if x * y == 1: return 1
     if x * y <= 0: return 0
