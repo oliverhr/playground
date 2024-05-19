@@ -1,7 +1,16 @@
-function gridTraveler(x, y) {
-    if (x * y === 1) return 1
-    if (x * y === 0) return 0
-    return gridTraveler(x-1, y) + gridTraveler(x, y-1)
+function gridTraveler(m, n) {
+    const mem = new Map()
+    const fn = (x, y) => {
+        const key = `${x},${y}`
+
+        if (mem.has(key)) return mem.get(key)
+        if (x * y === 1) return 1
+        if (x * y <= 0) return 0
+
+        mem.set(key, fn(x-1, y) + fn(x, y-1))
+        return mem.get(key)
+    }
+    return fn(m, n)
 }
 
 const grids = [
@@ -12,7 +21,8 @@ const grids = [
     [2, 3],
     [3, 3],
     [8, 8],
-    // [18, 18],
+    [18, 18],
 ]
 
+console.log('------------------------')
 grids.forEach(([x, y]) => console.log(`${x}, ${y}: ${gridTraveler(x, y)}`))
