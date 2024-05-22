@@ -4,7 +4,7 @@
 # Write a funcion "can_cum(target_sum, numbers)", taht takes an integer
 # which is the desired result, and an array of numbers as arguments.
 #
-# The function shouls return a boolean indicating whether or not it is
+# The function should return a boolean indicating whether or not it is
 # posible to generate the target_sum using numbers from the array
 #
 # Constraints:
