@@ -27,18 +27,18 @@ class TestHowSum(unittest.TestCase):
         self.assertEqual(None, implementation(300, [7, 14]))
 
 
-def implementation(target_sum: int, numbers: list[int]):
+def implementation(target_sum: int, numbers: list[int]) -> list[int] | None:
     """
     Inner function to simplify and encapsulate the memoization
     """
-    mem = {}
-    def how_sum(target):
+    mem: dict[int, list] = {}
+    def how_sum(target) -> list[int] | None:
         if target in mem: return mem[target]
         if target == 0: return []
         if target < 0: return None
 
         for num in numbers:
-            remnant = target - num
+            remnant: int = target - num
             if (result := how_sum(remnant)) is not None:
                 mem[target] = [ *result, num ]
                 return mem[target]
