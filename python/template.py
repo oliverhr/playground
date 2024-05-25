@@ -15,14 +15,14 @@ def implementation():
     return None
 
 
-def test_expect_tobe_true():
+def test_expects_to_be_true():
     expected = True
     actual = implementation()
     assert expected == actual, \
            f'expected {expected} but {actual} was received.'
 
 
-def test_expect_tobe_false():
+def test_expects_to_be_false():
     expected = False
     actual = implementation()
     assert expected == actual, \
@@ -34,6 +34,6 @@ class Solution:
         return implementation(s)
 
 if __name__ == '__main__':
-    test_expect_tobe_true()
-    test_expect_tobe_false()
+    test_expects_to_be_true()
+    test_expects_to_be_false()
 
