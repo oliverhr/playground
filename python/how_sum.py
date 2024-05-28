@@ -1,7 +1,7 @@
 # -----------------------------------------------------------------------------
 # How Sum
 #
-# Write a funcion "how_cum(target_sum, numbers)", taht takes an integer
+# Write a funcion "how_sum(target_sum, numbers)", that takes an integer
 # which is the desired result of the sum, and an array of numbers as arguments.
 #
 # The function should return an array containing any combination of elements
