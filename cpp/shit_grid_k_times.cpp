@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
 
 using namespace std;
@@ -12,8 +12,8 @@ vector<vector<int>> shiftGrid(vector<vector<int>>& grid, const int shift) {
 		list.insert(list.end(), row.begin(), row.end());
 	}
 	const int length = (int)list.size();
-		
-	int pos = length - (shift % length);	
+
+	int pos = length - (shift % length);
 	for (int i = 0; i < rows; i++) {
 		for (int j = 0; j < cols; j++) {
 			if (pos == length) pos = 0;
