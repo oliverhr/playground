@@ -10,7 +10,8 @@ using namespace std;
  *
  * Para saber en que punto iniciamos o la posición inicial del shift, calculamos
  * esta posición utilizando el tamaño de la matrix menos el resultado de la operación
- * modulo/reminder de "shift" % "length".
+ * modulo/reminder de "shift" % "length", el operador modulo o reminder es utilizado
+ * comunmente para asegurarse que un numero esta dentro de un rango o limite.
 */
 vector<vector<int>> shiftGrid(vector<vector<int>>& grid, const int shift) {
 	const int rows = int (grid.size());
