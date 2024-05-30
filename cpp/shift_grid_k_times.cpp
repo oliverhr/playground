@@ -3,6 +3,15 @@
 
 using namespace std;
 
+/**
+ * Solución: La manera mas simple es el regresar los elementos a una estructura más
+ * convencional, por ejemplo una lista/array, en este caso seguimos utilizando un
+ * Vector, pero de una sola dimensión.
+ *
+ * Para saber en que punto iniciamos o la posición inicial del shift, calculamos
+ * esta posición utilizando el tamaño de la matrix menos el resultado de la operación
+ * modulo/reminder de "shift" % "length".
+*/
 vector<vector<int>> shiftGrid(vector<vector<int>>& grid, const int shift) {
 	const int rows = int (grid.size());
 	const int cols = int (grid[0].size());
