@@ -1,10 +1,17 @@
 #include <iostream>
 #include <vector>
+#include <numeric>
 
 using namespace std;
 
 vector<int> findDisappereadNumbers(const vector<int> &numbers) {
-    vector<int> disappeared;
+    vector<int> disappeared(numbers.size());
+    std::iota(disappeared.begin(), disappeared.end(), 1);
+
+    for (int i = 0; i < numbers.size(); i++ ) {
+        cout << numbers[i] << ",";
+    }
+    cout << "\n";
     return disappeared;
 }
 
