@@ -5,13 +5,19 @@
 using namespace std;
 
 vector<int> findDisappereadNumbers(const vector<int> &numbers) {
-    vector<int> disappeared(numbers.size());
-    std::iota(disappeared.begin(), disappeared.end(), 1);
+    int size = numbers.size();
 
-    for (int i = 0; i < numbers.size(); i++ ) {
-        cout << numbers[i] << ",";
+    vector<bool> exist(size + 1, false);
+    for (auto &num : numbers) {
+        exist[num] = true;
     }
-    cout << "\n";
+
+    vector<int> disappeared;
+    for (int i = 1; i <= size; i++) {
+        if (!exist.at(i))
+            disappeared.push_back(i);
+    }
+
     return disappeared;
 }
 
@@ -29,6 +35,14 @@ void test1() {
     printArray(missing);
 }
 
+void test2() {
+    vector<int> nums = {1, 1};
+    printArray(nums);
+    vector<int> missing = findDisappereadNumbers(nums);
+    printArray(missing);
+}
+
 auto main(int argc, const char *argv[]) -> int {
     test1();
+    test2();
 }
