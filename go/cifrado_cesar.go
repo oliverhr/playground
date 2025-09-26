@@ -4,8 +4,9 @@ import (
 	"fmt"
 )
 
+const text string = "attackatonce"
+
 func main() {
-	text := "attackatonce"
 	shift := 4
 
 	encoded := rotate(text, shift)
@@ -26,7 +27,7 @@ func main() {
  * Ambas secuencias no incluyen la ñ/Ñ ni vocales con acento
  */
 func rotate(text string, shift int) string {
-	shift = (shift % 26 + 26) % 26 // [0, 25] = 26 items
+	shift = (shift%26 + 26) % 26 // [0, 25] = 26 items
 
 	slice := make([]byte, len(text))
 
@@ -35,17 +36,16 @@ func rotate(text string, shift int) string {
 		char := text[i]
 
 		switch {
-			case 'a' <= char && char <= 'z': // mayúsculas
-				ascii = 'a'
-			case 'A' <= char && char <= 'Z': // minúsculas
-				ascii = 'A'
-			default:
-				slice[i] = char
-				continue
+		case 'a' <= char && char <= 'z': // mayúsculas
+			ascii = 'a'
+		case 'A' <= char && char <= 'Z': // minúsculas
+			ascii = 'A'
+		default:
+			slice[i] = char
+			continue
 		}
-		slice[i] = byte(ascii + ((int(char) - ascii) + shift) % 26)
+		slice[i] = byte(ascii + ((int(char)-ascii)+shift)%26)
 	}
 
 	return string(slice)
 }
-
