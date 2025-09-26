@@ -123,13 +123,4 @@ s = n > 10 ? 'greater' : 'less or equal'
         number (range 3)] ; this evaluates a list from 0 to 2
   (prn [letter number]))
 
-;; Clojure `for`
-;; - is a list comprehension, not a for-loop
-;; - generator function for sequence permutation
-;; - Bindings behave like doseq
-
-(for [letter [:a :b]
-      number (range 3)]
-  [letter number])
-
 
