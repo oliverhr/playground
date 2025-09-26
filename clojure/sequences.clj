@@ -1,4 +1,3 @@
-
 ;; Sequences
 ;; (sequence coll) (sequence xform coll) (sequence xform coll & colls)
 ;; - sequences represent iteration as values
@@ -17,10 +16,4 @@
 
 (println "With a string:"
          (sequence "abc"))
-
-;; Reducers
-;; - (v1.5) represent iteration as function composition
-;; - Alternative approach to using sequences
-
-
 
