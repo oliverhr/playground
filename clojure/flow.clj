@@ -8,9 +8,9 @@
 "
 ```javascript
 const n = 99
-let x = 'less or equal'
 
-// statement
+// statements
+let x = 'less or equal'
 if (n > 10) {
   s = 'greater'
 }
@@ -29,7 +29,7 @@ s = n > 10 ? 'greater' : 'less or equal'
 
 (println (str "2 is " (if (even? 2) "even" "odd")))
 
-; else is optiona; else is optionall
+; else is optional; else is optional
 (println (if (true? true) "impossible!"))
 (println (if (true? false) "impossible!"))
 
@@ -69,9 +69,10 @@ s = n > 10 ? 'greater' : 'less or equal'
 ;; - each test is evaluated in order
 ;; - the first expression evaluated to `true` is returned
 (let [y 5]
-  (println (cond
-             (< y 2) "y is less than 2"
-             (< y 10) "y is less than 10")))
+  (println
+    (cond
+      (< y 2) "y is less than 2"
+      (< y 10) "y is less than 10")))
 
 ;; `cond` and `else`
 ;; - if no test is satisfied, nil is returned
@@ -79,10 +80,11 @@ s = n > 10 ? 'greater' : 'less or equal'
 ;;   always evaluate to `true` this becasue remember that all the
 ;;   values are logically true, except for `false` and `nil`
 (let [z 11]
-  (println (cond
-             (< z 2) "z is less than 2"
-             (< z 10) "z is less than 10"
-             :else "z is greater than or equal to 10")))
+  (println
+    (cond
+      (< z 2) "z is less than 2"
+      (< z 10) "z is less than 10"
+      :else "z is greater than or equal to 10")))
 
 ;; `case` compares an argument to a series of values to find a match
 ;; - this is done in constant time (like matching a dictionary item by key)
