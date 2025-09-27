@@ -34,6 +34,13 @@
 
 (println (-evens 42))
 
+;; idiomatic foldcat
+(defn -evens-bis [limit]
+  (r/foldcat (r/filter even? (r/map inc (range limit)))))
+;; reducer foldcat has this weird behavior depending of the size
+;; of the data the returned type change
+(println (into [] (-evens-bis 28)))
+
 ;; Deconstructed
 (defn -evens-def [limit]
    (def rango (range limit))
@@ -41,7 +48,7 @@
    (def filt (r/filter even? incre))
    (into [] filt))
 
-(println (-evens-deco 28))
+(println (-evens-def 14))
 
 ;; Deconstructed with let
 (defn -evens-loc [limit]
@@ -49,5 +56,5 @@
      (let [_ (r/map inc _)]
        (let [_ (r/filter even? _)]
          (into [] _)))))
-(println (-evens-loc 14))
+(println (-evens-loc 7))
 
