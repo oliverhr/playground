@@ -22,3 +22,6 @@ https://leiningen.org
 ### Guides
 
 - https://shinyu.org/en/clojure/
+- https://www.braveclojure.com/quests/babooka/
+
+
