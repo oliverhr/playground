@@ -1,1 +1,0 @@
-[{:timestamp 1759125060473, :entry "This my first time writing a script with clojure/babashka"} {:timestamp 1759125182167, :entry "Babashka looks neat\n"} {:timestamp 1759125291078, :entry "Babashka can be used to write command line scripts"} {:timestamp 1759125346401, :entry "How"} {:timestamp 1759125403224, :entry "Entries with with spaces in between must be quoted"}]
