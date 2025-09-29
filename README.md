@@ -1,1 +1,7 @@
-# Data Structures & Algorithms
+# Progamming Playground
+
+- Data Structures
+- Algorithms
+- Paradigms
+- Languages
+
