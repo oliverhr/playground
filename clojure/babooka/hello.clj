@@ -1,6 +1,8 @@
 #!/usr/bin/env bb
+
 ;; -----------------------------------------------------------------------------
 ;; https://www.braveclojure.com/quests/babooka/
+;; https://github.com/braveclojure/babooka
 ;; -----------------------------------------------------------------------------
 (require '[clojure.string :as str])
 ;; note the syntax for the require, here no namespace is declared
