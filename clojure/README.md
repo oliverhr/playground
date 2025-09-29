@@ -16,3 +16,9 @@ https://leiningen.org
 
 - https://luminusweb.com
 
+
+## Help
+
+### Guides
+
+- https://shinyu.org/en/clojure/
