@@ -12,8 +12,7 @@
 ;; require loads and reloads
 ;; can assign an alias using `:as` to a namespace
 ;; with refer works like python from ..import x tu use the unqualified name
-;; think is similar to :as-alias but without loading the n:set background=dark; colorscheme desert
-amespace
+;; think is similar to :as-alias but without loading the namespace
 
 ;; To use java packages/classes we need to use :import
 
