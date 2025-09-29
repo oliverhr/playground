@@ -1,0 +1,51 @@
+#!/usr/bin/env bb
+
+(require '[babashka.cli :as cli]
+         '[babashka.fs :as fs]
+         '[clojure.edn :as edn])
+
+(def ENTRIES-LOCATION "entries.edn")
+
+(defn read-entries
+  "Read Journal entries"
+  []
+  (if (fs/exists? ENTRIES-LOCATION)
+    (edn/read-string (slurp ENTRIES-LOCATION))
+    [])
+)
+
+(defn add-entry
+  "Add entries to the journal"
+  [{:keys [opts]}]
+  (let [entries (read-entries)]
+    (spit ENTRIES-LOCATION
+          (conj entries
+                (merge {:timestamp (System/currentTimeMillis)}
+                       opts)))))
+
+
+(def cli-opts
+  {:entry     {:alias   :e
+               :desc    "What you want to add to the journal."
+               :require true}
+   :timestap  {:alias   :t
+               :desc    "A unix timestamp, when your recorded this."
+               :cource  {:timestamp :long}}
+  })
+
+(defn help
+  [_]
+  (println
+    (str "add\n"
+         (cli/format-opts {:spec cli-opts})))
+)
+
+(def table
+  [{:cmds ["add"] :fn add-entry :spec cli-opts}
+   {:cmds [] :fn help}
+  ])
+
+;; -----------------------------------------------------------------------------
+(cli/dispatch table *command-line-args*)
+
+; vim: set ft=clojure :
