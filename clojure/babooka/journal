@@ -1,9 +1,13 @@
 #!/usr/bin/env bb
+;; =============================================================================
+;; journal app from babook - clojure/babashka
+;; =============================================================================
 
 (require '[babashka.cli :as cli]
          '[babashka.fs :as fs]
          '[clojure.edn :as edn])
 
+;; -----------------------------------------------------------------------------
 (def ENTRIES-LOCATION "entries.edn")
 
 (defn read-entries
@@ -11,8 +15,7 @@
   []
   (if (fs/exists? ENTRIES-LOCATION)
     (edn/read-string (slurp ENTRIES-LOCATION))
-    [])
-)
+    []))
 
 (defn add-entry
   "Add entries to the journal"
@@ -23,7 +26,7 @@
                 (merge {:timestamp (System/currentTimeMillis)}
                        opts)))))
 
-
+;; -----------------------------------------------------------------------------
 (def cli-opts
   {:entry     {:alias   :e
                :desc    "What you want to add to the journal."
@@ -34,11 +37,11 @@
   })
 
 (defn help
+  "Display usage based on the cli-opts binding"
   [_]
   (println
     (str "add\n"
-         (cli/format-opts {:spec cli-opts})))
-)
+         (cli/format-opts {:spec cli-opts}))))
 
 (def table
   [{:cmds ["add"] :fn add-entry :spec cli-opts}
