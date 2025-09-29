@@ -33,7 +33,7 @@
                :require true}
    :timestap  {:alias   :t
                :desc    "A unix timestamp, when your recorded this."
-               :cource  {:timestamp :long}}
+               :coerce  {:timestamp :long}}
   })
 
 (defn help
