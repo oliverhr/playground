@@ -1,0 +1,16 @@
+;; =============================================================================
+;; journal app from babook - clojure/babashka
+;; =============================================================================
+(ns journal.add
+  (:require
+    [journal.utils :as utils]))
+
+(defn add-entry
+  [opts]
+  (let [entries (utils/read-entries)]
+    (spit utils/ENTRIES-LOCATION
+          (conj entries
+                (merge {:timestamp (System/currentTimeMillis)}
+                       opts)))))
+
+; vim: set ft=clojure :

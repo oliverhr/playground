@@ -4,49 +4,27 @@
 ;; =============================================================================
 
 (require '[babashka.cli :as cli]
-         '[babashka.fs :as fs]
-         '[clojure.edn :as edn])
+         '[journal.add  :as add]
+         '[journal.list :as ls])
 
-;; -----------------------------------------------------------------------------
-(def ENTRIES-LOCATION "entries.edn")
-
-(defn read-entries
-  "Read Journal entries"
-  []
-  (if (fs/exists? ENTRIES-LOCATION)
-    (edn/read-string (slurp ENTRIES-LOCATION))
-    []))
-
-(defn add-entry
-  "Add entries to the journal"
-  [{:keys [opts]}]
-  (let [entries (read-entries)]
-    (spit ENTRIES-LOCATION
-          (conj entries
-                (merge {:timestamp (System/currentTimeMillis)}
-                       opts)))))
-
-;; -----------------------------------------------------------------------------
 (def cli-opts
   {:entry     {:alias   :e
                :desc    "What you want to add to the journal."
                :require true}
-   :timestap  {:alias   :t
+   :timestamp {:alias   :t
                :desc    "A unix timestamp, when your recorded this."
-               :coerce  {:timestamp :long}}
-  })
+               :coerce  {:timestamp :long}}})
 
 (defn help
-  "Display usage based on the cli-opts binding"
   [_]
-  (println
-    (str "add\n"
-         (cli/format-opts {:spec cli-opts}))))
+  (println (str "add\n" (cli/format-opts {:spec cli-opts})))
+  (println "list\n" "list entries.")
+)
 
 (def table
-  [{:cmds ["add"] :fn add-entry :spec cli-opts}
-   {:cmds [] :fn help}
-  ])
+  [{:cmds ["add"] :fn #(add/add-entry (:opts %)) :spec cli-opts}
+   {:cmds ["list"] :fn #(ls/list-entries %)}
+   {:cmds [] :fn help}])
 
 ;; -----------------------------------------------------------------------------
 (cli/dispatch table *command-line-args*)
