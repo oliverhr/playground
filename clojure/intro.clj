@@ -7,13 +7,12 @@
 
 (comment
   ; La siguiente forma ejemplifica dos cosas:
-  ; - funciones anonymas
-  ; Son utilizada para ser enviadas como parametros a otras functiones
+  ; - funciones anonimas
+  ; Son utilizada para ser enviadas como parametros a otras funciones
 
   ; - inmediatelly invoked expression como en Javascript las IIFE
   ; No son comunmente utilizadas pero pueden ser utiles pero
-  ; como se puede ver en la funcion `-main` de este archivo resultan
-  ; muy utiles
+  ; como se puede ver en la funcion `-main` de este archivo.
 )
 ((fn [msg] (println msg)) "----------------------------------")
 
