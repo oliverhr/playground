@@ -18,7 +18,7 @@ class LinkedList:
         else:
             self.last.next = node
             self.last = node
-            
+
     def getlast(self):
         return self.last
 

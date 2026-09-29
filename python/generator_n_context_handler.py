@@ -26,7 +26,8 @@ def good(filename: str) -> None:
 
 def better(filename: str) -> None:
     def handler(line: str) -> None:
-        if line.strip(): print(line)
+        if line.strip():
+            print(line)
 
     def gen():
         with open(filename) as file:
